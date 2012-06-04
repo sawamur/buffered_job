@@ -1,12 +1,13 @@
 # buffered_job
 
-Buffering jobs for a certain period to do specific method when two or more similer jobs in 
+Buffering jobs for a certain period and invoke specific method if two or more similer jobs in 
 a buffer.
 
 ## Scenario
 
-If you implement email notification. To avoid sending too many mail to a 
-receipient, you can merge multiple notificaiton in one mail.
+For exsample.If you implement email notification for incomming comment on a article.
+To avoid sending too many mail to a receipient, you can merge multiple notificaiton 
+in one mail.
 
 That mean, if a user get comment notification for his blog article.
 
@@ -48,7 +49,8 @@ $ (bundle exec) rake db:migrate
 
 ## Dependancies
 
-This module depends on delayed_job.Set up delayed_job and run delayed_job worker
+This module depends on delayed_job.Set up delayed_job and intended to use in rails
+applications. You have to run delayed_job worker.
 
 
 ## Usage
@@ -58,7 +60,7 @@ This module depends on delayed_job.Set up delayed_job and run delayed_job worker
 @user.buffer.post_to_twitter(@aritcle2)
 ``` 
  
-invoke merge_* medtho in User mode
+invoke merge_* medtho in User mode,so you should define
 
 ```
 def merge_post_to_twitter(@articles)
@@ -66,7 +68,15 @@ def merge_post_to_twitter(@articles)
 end
 ```
 
- 
+
+## Configuration 
+
+default buffering time is tree munites. To modify,
+
+```
+BufferedJob.delay_time = 30.seconds
+```
+
 
 ## Copyright
 
