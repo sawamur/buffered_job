@@ -78,7 +78,7 @@ end
 class User < ActiveRecord::Base
   has_many :articles
   attr_accessor :posted
-  include BufferedJob::Util
+#  include BufferedJob::Ext
 
   def notify(comment)
     BufferedJob::Spec.result =  comment

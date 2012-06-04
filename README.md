@@ -3,7 +3,7 @@
 Buffering jobs for a period to do specific method when two or more similer jobs in 
 a buffer.
 
-## When to use
+## Scenario
 
 If you implement email notification. To avoid sending too many mail to a 
 receipient, you can merge multiple notificaiton in one mail.
@@ -43,13 +43,6 @@ gem 'buffered_job',:git => 'git://github.com/sawamur/buffered_job.git'
 ```
 $ (bundle exec) rails generate buffered_job
 $ (bundle exec) rake db:migrate
-```
-
-
-include utils to models you want to use
-
-```
-include BufferedJob::Util
 ```
 
 
