@@ -87,7 +87,7 @@ end
 
 ## Current Limitation
 
-One argument object can be passed to buffered method. 
+Only one argument object can be passed to buffered method. 
 
 
 ## Configuration 
