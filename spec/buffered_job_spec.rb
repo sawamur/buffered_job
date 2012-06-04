@@ -35,4 +35,5 @@ describe "BufferedJob" do
     BufferedJob.flush!
     BufferedJob::Spec.result.should == [c1,c2]
   end
+
 end

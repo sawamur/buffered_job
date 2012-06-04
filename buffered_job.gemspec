@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "buffered_job"
-  s.version = "0.2.0"
+  s.version = "0.2.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Masaki Sawamura"]
@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   s.files = [
     ".document",
     ".rspec",
+    ".travis.yml",
     "Gemfile",
     "Gemfile.lock",
     "LICENSE.txt",
@@ -38,7 +39,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/sawamur/buffered_job"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.24"
+  s.rubygems_version = "1.8.10"
   s.summary = "buffering jobs to merge similer jobs"
 
   if s.respond_to? :specification_version then
