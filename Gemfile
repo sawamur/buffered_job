@@ -13,5 +13,5 @@ group :development do
   gem "simplecov", ">= 0"
 end
 
-
 gem "delayed_job_active_record"
+gem "actionmailer"
