@@ -1,6 +1,6 @@
 # buffered_job
 
-Buffering jobs for a period. Do specific method when two or more similer jobs in 
+Buffering jobs for a period to do specific method when two or more similer jobs in 
 a buffer.
 
 ## When to use
