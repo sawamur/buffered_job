@@ -41,6 +41,7 @@ in Gemfile
 gem 'buffered_job',:git => 'git://github.com/sawamur/buffered_job.git'
 ```
 
+then, `bundle install`
 
 
 ## Peparation
