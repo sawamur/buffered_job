@@ -62,10 +62,22 @@ $ (bundle exec) rake db:migrate
 ```
 
 
-## Dependancies
+### Dependancies
 
 This module depends on [delayed_job_active_record](https://github.com/collectiveidea/delayed_job_active_record).
 Set up delayed_job and be sure to run delayed_job worker.
+
+
+## Running jobs
+
+flushing would be triggered by delayed_job. Start worker as follows 
+
+
+```
+$ (bundle exec) rake jobs:work
+```
+
+See more details about [delayed_job_active_record](https://github.com/collectiveidea/delayed_job_active_record)
 
 
 ## Usage
