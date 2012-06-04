@@ -12,3 +12,6 @@ group :development do
   gem "jeweler", "~> 1.8.3"
   gem "simplecov", ">= 0"
 end
+
+
+gem "delayed_job_active_record"

@@ -15,15 +15,29 @@ Gemfile
  gem 'buffered_job',:git => 'git://github.com/sawamur/buffered_job.git'
 
 
-== Contributing to buffered_job
+= Peparation
+
+ $ (bundle exec) rails generate buffered_job
+ $ (bundle exec) rake db:migrate
+
+
+include utils to models you want to use
+
+ include BufferedJob::Util
+
+= Usage
+
+
+ @user.buffer.post_to_twitter(@article1)
+ @user.buffer.post_to_twitter(@aritcle2)
  
-* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
-* Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
-* Fork the project.
-* Start a feature/bugfix branch.
-* Commit and push until you are happy with your contribution.
-* Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
-* Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
+ # invoke merge_* medtho in User mode
+ 
+ def merge_post_to_twitter(@articles)
+  ..
+ end
+
+ 
 
 == Copyright
 
