@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.email = "m-sawa@nttr.co.jp"
   s.extra_rdoc_files = [
     "LICENSE.txt",
-    "README.rdoc"
+    "README.md"
   ]
   s.files = [
     ".document",
@@ -22,15 +22,17 @@ Gem::Specification.new do |s|
     "Gemfile",
     "Gemfile.lock",
     "LICENSE.txt",
-    "README.rdoc",
+    "README.md",
     "Rakefile",
     "VERSION",
     "buffered_job.gemspec",
     "lib/buffered_job.rb",
-    "lib/buffered_job/active_record.rb",
+    "lib/buffered_job/ext.rb",
+    "lib/buffered_job/main.rb",
     "lib/generators/buffered_job/buffered_job_generator.rb",
     "lib/generators/buffered_job/templates/migration.rb",
     "spec/buffered_job_spec.rb",
+    "spec/database.yml",
     "spec/spec_helper.rb"
   ]
   s.homepage = "http://github.com/sawamura_nttr/buffered_job"
@@ -43,27 +45,36 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<activesupport>, [">= 0"])
       s.add_runtime_dependency(%q<delayed_job_active_record>, [">= 0"])
+      s.add_runtime_dependency(%q<actionmailer>, [">= 0"])
       s.add_development_dependency(%q<rspec>, ["~> 2.8.0"])
       s.add_development_dependency(%q<rdoc>, ["~> 3.12"])
       s.add_development_dependency(%q<bundler>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.8.3"])
       s.add_development_dependency(%q<simplecov>, [">= 0"])
+      s.add_development_dependency(%q<sqlite3>, [">= 0"])
     else
+      s.add_dependency(%q<activesupport>, [">= 0"])
       s.add_dependency(%q<delayed_job_active_record>, [">= 0"])
+      s.add_dependency(%q<actionmailer>, [">= 0"])
       s.add_dependency(%q<rspec>, ["~> 2.8.0"])
       s.add_dependency(%q<rdoc>, ["~> 3.12"])
       s.add_dependency(%q<bundler>, [">= 0"])
       s.add_dependency(%q<jeweler>, ["~> 1.8.3"])
       s.add_dependency(%q<simplecov>, [">= 0"])
+      s.add_dependency(%q<sqlite3>, [">= 0"])
     end
   else
+    s.add_dependency(%q<activesupport>, [">= 0"])
     s.add_dependency(%q<delayed_job_active_record>, [">= 0"])
+    s.add_dependency(%q<actionmailer>, [">= 0"])
     s.add_dependency(%q<rspec>, ["~> 2.8.0"])
     s.add_dependency(%q<rdoc>, ["~> 3.12"])
     s.add_dependency(%q<bundler>, [">= 0"])
     s.add_dependency(%q<jeweler>, ["~> 1.8.3"])
     s.add_dependency(%q<simplecov>, [">= 0"])
+    s.add_dependency(%q<sqlite3>, [">= 0"])
   end
 end
 
