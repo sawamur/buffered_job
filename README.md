@@ -67,10 +67,10 @@ applications. You have to run delayed_job worker.
 @user.buffer.post_to_twitter(@aritcle2)
 ``` 
  
-invoke merge_* medtho in User mode,so you should define
+invoke merge_* method in User model,so you must define
 
 ```
-def merge_post_to_twitter(@articles)
+def merge_post_to_twitter(articles)
  ..
 end
 ```
