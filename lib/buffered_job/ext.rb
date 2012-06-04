@@ -26,13 +26,8 @@ class BufferedJob
     end
 
     def buffer(opt={})
-      if self.kind_of?(User)
-        buffer_for(self,opt)
-      else
-        raise NoBufferTargetError unless self.respond_to?(:user)
-        raise NoBufferTargetError unless self.user
-        buffer_for(self.user,opt)
-      end
+      raise NoBufferTargetError unless self.respond_to?(:id)
+      buffer_for(self,opt)
     end
   end
 
