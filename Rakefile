@@ -17,9 +17,9 @@ Jeweler::Tasks.new do |gem|
   gem.name = "buffered_job"
   gem.homepage = "http://github.com/sawamura_nttr/buffered_job"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
-  gem.email = "m-sawa@nttr.co.jp"
+  gem.summary = %Q{buffering jobs to merge similer jobs}
+  gem.description = %Q{Buffering jobs for a certain period and invoke specific method if two or more similer jobs in a buffer.}
+  gem.email = "masaki.sw@gmail.com"
   gem.authors = ["Masaki Sawamura"]
   # dependencies defined in Gemfile
 end

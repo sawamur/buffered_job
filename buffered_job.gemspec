@@ -10,8 +10,8 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Masaki Sawamura"]
   s.date = "2012-06-04"
-  s.description = "TODO: longer description of your gem"
-  s.email = "m-sawa@nttr.co.jp"
+  s.description = "Buffering jobs for a certain period and invoke specific method if two or more similer jobs in a buffer."
+  s.email = "masaki.sw@gmail.com"
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.md"
@@ -39,7 +39,7 @@ Gem::Specification.new do |s|
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.24"
-  s.summary = "TODO: one-line summary of your gem"
+  s.summary = "buffering jobs to merge similer jobs"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
