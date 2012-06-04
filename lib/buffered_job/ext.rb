@@ -1,4 +1,4 @@
-class BufferedJob
+module BufferedJob
   module Ext
     def buffer_for(user,opt={})
       Proxy.new(self,user,opt)

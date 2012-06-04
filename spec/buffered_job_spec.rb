@@ -7,17 +7,17 @@ describe "BufferedJob" do
     @george = User.create(:name => "george")
     @article = Article.create(:user => @john,:text => "foo")
     BufferedJob::Spec.result = []
+    BufferedJob::Model.destroy_all
   end
 
   after do
-    BufferedJob.destroy_all
   end
 
   it "can buffer jobs" do
     comment = @article.comments.create(:user => @paul,:text => "I love this!")
     @john.buffer.notify(comment)
-    BufferedJob.last.user_id.should == @john.id
-    BufferedJob.last.receiver.should == YAML.dump(@john)
+    BufferedJob::Model.last.user_id.should == @john.id
+    BufferedJob::Model.last.receiver.should == YAML.dump(@john)
   end
 
   it "can exec one job " do
