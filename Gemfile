@@ -11,6 +11,7 @@ group :development do
   gem "bundler"
   gem "jeweler", "~> 1.8.3"
   gem "simplecov", ">= 0"
+  gem "sqlite3"
 end
 
 gem "delayed_job_active_record"
