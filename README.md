@@ -64,7 +64,7 @@ $ (bundle exec) rake db:migrate
 
 ## Dependancies
 
-This module depends on (delayed_job_active_record)[https://github.com/collectiveidea/delayed_job_active_record].
+This module depends on [delayed_job_active_record](https://github.com/collectiveidea/delayed_job_active_record).
 Set up delayed_job and be sure to run delayed_job worker.
 
 
