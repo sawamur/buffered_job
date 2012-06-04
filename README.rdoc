@@ -1,6 +1,19 @@
 = buffered_job
 
-Description goes here.
+Buffering jobs for specific period. Do other method when two or more similer jobs in 
+a buffer.
+
+= When to use
+
+If you implement email notification. You can merge multiple notificaiton in one mail with
+
+
+= Install
+
+Gemfile
+
+ gem 'buffered_job',:git => 'git://github.com/sawamur/buffered_job.git'
+
 
 == Contributing to buffered_job
  
