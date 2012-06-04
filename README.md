@@ -35,13 +35,20 @@ Then. With this module,you can buffer `notify` method
 
 ## Install
 
-in Gemfile
 
 ```
-gem 'buffered_job',:git => 'git://github.com/sawamur/buffered_job.git'
+$ gem install buffered_job
+
+```
+
+or in Gemfile
+
+```
+gem 'buffered_job'
 ```
 
 then, `bundle install`
+
 
 
 ## Peparation
