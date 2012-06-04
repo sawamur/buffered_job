@@ -11,22 +11,20 @@ If you implement straightforward, the auther of popular article would receive to
 That must be bothering. To avoid sending too many mails to a receipient, you can merge multiple 
 notificaiton messages into one another method (in this casse that would be sending method) .
 
-That mean, if a user get comment notification for her blog article.
+That mean, if a user gets a comment notification for her blog article as follows:
 
 ```
  @article = Article.create(:user => @user,:text => "my blog article here")
  c = @article.comments.create(:user => @jon, :text => "i love this article!")
- # if this invoke 
  @user.notify(c)
- # send to email
 ```
 
-with this module
+Then. With this module,you can buffer `notify` method 
 
 ```
  c1 = @article.comments.create(:user => @jon, :text => "i love this article!")
  c2 = @article.comments.create(:user => @ken, :text => "i hate this article!")
- # if this invoke
+
  @user.buffer.notify(c1)
  @user.buffer.notify(c2)
  # these two methods would be translated to
