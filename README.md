@@ -70,7 +70,7 @@ Set up delayed_job and be sure to run delayed_job worker.
 
 ## Running jobs
 
-flushing would be triggered by delayed_job. Start worker as follows 
+flushing would be triggered by delayed_job. Start worker as follows after migrating the table required.
 
 
 ```
