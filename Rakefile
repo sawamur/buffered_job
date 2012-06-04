@@ -15,7 +15,7 @@ require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "buffered_job"
-  gem.homepage = "http://github.com/sawamura_nttr/buffered_job"
+  gem.homepage = "http://github.com/sawamur/buffered_job"
   gem.license = "MIT"
   gem.summary = %Q{buffering jobs to merge similer jobs}
   gem.description = %Q{Buffering jobs for a certain period and invoke specific method if two or more similer jobs in a buffer.}
