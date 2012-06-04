@@ -36,4 +36,23 @@ describe "BufferedJob" do
     BufferedJob::Spec.result.should == [c1,c2]
   end
 
+  context "with delayed_job" do
+    before do
+      @original_delay_time = BufferedJob.delay_time
+      BufferedJob.delay_time = 0
+    end
+
+    after do
+      BufferedJob.delay_time = @original_delay_time 
+    end
+
+    it "should be flushed by Delayed::Worker" do
+      c1 = @article.comments.create(:user => @paul,:text => "I love this!")
+      @john.buffer.notify(c1)
+      c2 = @article.comments.create(:user => @george,:text => "I hate this!")
+      @john.buffer.notify(c2)
+      Delayed::Worker.new.work_off
+      BufferedJob::Spec.result.should == [c1,c2]
+    end
+  end
 end

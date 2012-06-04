@@ -6,19 +6,9 @@ module BufferedJob
     before_create :yaml_dump
     after_create :set_delayed_job
 
-    DEFAULT_DELAY_TIME = 3.minutes
-    @@delay_time = DEFAULT_DELAY_TIME
     
     def self.cache
       @@cache ||= defined?(Rails) ? Rails.cache : ActiveSupport::Cache::MemoryStore.new
-    end
-
-    def self.delay_time=(sec)
-      @@delay_time = sec
-    end
-    
-    def self.reset_delay_time
-      @@delay_time = DEFAULT_DELAY_TIME
     end
     
     def self.mailer?(obj)
@@ -95,7 +85,7 @@ module BufferedJob
     end
 
     def set_delayed_job
-      delay_time = @@delay_time or DEFAULT_DELAY_TIME
+      delay_time = BufferedJob.delay_time
       self.class.delay(:run_at => delay_time.from_now).flush!
     end
   end
