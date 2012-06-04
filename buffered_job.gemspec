@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "buffered_job"
-  s.version = "0.2.2"
+  s.version = "0.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Masaki Sawamura"]
@@ -29,7 +29,7 @@ Gem::Specification.new do |s|
     "buffered_job.gemspec",
     "lib/buffered_job.rb",
     "lib/buffered_job/ext.rb",
-    "lib/buffered_job/main.rb",
+    "lib/buffered_job/model.rb",
     "lib/buffered_job/proxy.rb",
     "lib/generators/buffered_job/buffered_job_generator.rb",
     "lib/generators/buffered_job/templates/migration.rb",
