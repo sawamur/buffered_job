@@ -66,7 +66,7 @@ applications. You have to run delayed_job worker.
 
 ## Usage
 
-Every active_record object has buffer method. You can put it  between receiver and method and bufferes method
+Every active_record object has `buffer` method. You can put it  between receiver and method and bufferes method
 along with argument object.
 
 
@@ -76,7 +76,7 @@ along with argument object.
 ``` 
 
 When flushing buffer,if two methods above is detected, that would  
-invoke merge_{original_method} method insted of original method on 
+invoke merge_{:original_method} method insted of original method on 
 that User model,so in this case, you must define `merge_post_to_twitter` in User model.
 
 ```
