@@ -101,6 +101,6 @@ BufferedJob.delay_time = 30.seconds
 
 ## Copyright
 
-Copyright (c) 2012 Masaki Sawamura. See LICENSE.txt for
-further details.
+Copyright (c) 2012 Masaki Sawamura. 
+See LICENSE.txt for further details.
 
