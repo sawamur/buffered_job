@@ -38,7 +38,6 @@ Then. With this module,you can buffer `notify` method
 
 ```
 $ gem install buffered_job
-
 ```
 
 or in Gemfile
