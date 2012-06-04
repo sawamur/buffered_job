@@ -5,15 +5,16 @@ a buffer.
 
 ## Scenario
 
-For exsample.If you implement email notification for incomming comment on a article.
-To avoid sending too many mail to a receipient, you can merge multiple notificaiton 
-in one mail.
+For example.If you implement email notification for incomming comments on a article.
+To avoid sending too many mail to a receipient, you can merge multiple notificaiton
+messages into one mail.
 
-That mean, if a user get comment notification for his blog article.
+That mean, if a user get comment notification for her blog article.
 
 ```
+ @article = Article.create(:user => @user,:text => "my blog article here")
  c = @article.comments.create(:user => @jon, :text => "i love this article!")
- # if this invoke , when @user = @article.user
+ # if this invoke 
  @user.notify(c)
  # send to email
 ```
@@ -34,9 +35,12 @@ with this module
 
 ## Install
 
-```Gemfile
+in Gemfile
+
+```
 gem 'buffered_job',:git => 'git://github.com/sawamur/buffered_job.git'
 ```
+
 
 
 ## Peparation
