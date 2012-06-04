@@ -3,19 +3,19 @@
 Buffering jobs for specific period. Do other method when two or more similer jobs in 
 a buffer.
 
-= When to use
+== When to use
 
 If you implement email notification. You can merge multiple notificaiton in one mail with
 
 
-= Install
+== Install
 
 Gemfile
 
  gem 'buffered_job',:git => 'git://github.com/sawamur/buffered_job.git'
 
 
-= Peparation
+== Peparation
 
  $ (bundle exec) rails generate buffered_job
  $ (bundle exec) rake db:migrate
@@ -25,7 +25,13 @@ include utils to models you want to use
 
  include BufferedJob::Util
 
-= Usage
+
+== Dependancies
+
+This module depends on delayed_job.Set up delayed_job and run delayed_job worker
+
+
+== Usage
 
 
  @user.buffer.post_to_twitter(@article1)
