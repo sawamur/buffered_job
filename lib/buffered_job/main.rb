@@ -5,8 +5,11 @@ class BufferedJob < ActiveRecord::Base
   DEFAULT_DELAY_TIME = 3.minutes
   @@delay_time = DEFAULT_DELAY_TIME
   
-  @@cache = defined?(Rails) ? Rails.cache : ActiveSupport::Cache::MemoryStore.new
-  
+
+  def self.cache
+    @@cache ||= defined?(Rails) ? Rails.cache : ActiveSupport::Cache::MemoryStore.new
+  end
+
   def self.delay_time=(sec)
     @@delay_time = sec
   end
@@ -77,15 +80,15 @@ class BufferedJob < ActiveRecord::Base
   end
   
   def self.lock!
-    @@cache.write("mail_buffer_lock",true,:expires_in => 10.minutes)
+    cache.write("mail_buffer_lock",true,:expires_in => 10.minutes)
   end
   
   def self.unlock!
-    @@cache.delete("mail_buffer_lock")
+    cache.delete("mail_buffer_lock")
   end
   
   def self.locked?
-    @@cache.exist?("mail_buffer_lock")
+    cache.exist?("mail_buffer_lock")
   end
   
   private
