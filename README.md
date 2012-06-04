@@ -64,8 +64,8 @@ $ (bundle exec) rake db:migrate
 
 ## Dependancies
 
-This module depends on delayed_job.Set up delayed_job and intended to use in rails
-applications. You have to run delayed_job worker.
+This module depends on (delayed_job_active_record)[https://github.com/collectiveidea/delayed_job_active_record].
+Set up delayed_job and be sure to run delayed_job worker.
 
 
 ## Usage
