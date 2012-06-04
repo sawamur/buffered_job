@@ -66,18 +66,28 @@ applications. You have to run delayed_job worker.
 
 ## Usage
 
+Every active_record object has buffer method. You can put it  between receiver and method and bufferes method
+along with argument object.
+
+
 ```
 @user.buffer.post_to_twitter(@article1)
 @user.buffer.post_to_twitter(@aritcle2)
 ``` 
- 
-invoke merge_* method in User model,so you must define
+
+When flushing buffer,if two methods above is detected, that would  
+invoke merge_{original_method} method insted of original method on 
+that User model,so in this case, you must define `merge_post_to_twitter` in User model.
 
 ```
 def merge_post_to_twitter(articles)
  ..
 end
 ```
+
+## Current Limitation
+
+One argument object can be passed to buffered method. 
 
 
 ## Configuration 
