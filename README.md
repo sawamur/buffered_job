@@ -1,5 +1,9 @@
 # buffered_job
 
+
+[![Build Status](https://secure.travis-ci.org/sawamur/buffered_job.png)](http://travis-ci.org/sawamur/buffered_job)
+
+
 Buffering jobs for a certain period and invoke specific method if two or more similer jobs in 
 a buffer.
 
