@@ -43,6 +43,61 @@ ActiveRecord::Schema.define do
   end
   add_index :delayed_jobs, [:priority, :run_at], :name => 'delayed_jobs_priority'
 
+
+  create_table :users do |t|
+    t.string :name
+  end
+
+  create_table :articles do |t|
+    t.integer :user_id
+    t.string :text
+  end
+
+  create_table :comments do |t|
+    t.integer :user_id
+    t.integer :article_id
+    t.string :text
+  end
 end
+
+
+class BufferedJob::Spec
+  @@result = []
+
+  def self.result=(args)
+    @@result = args
+  end
+
+  def self.result
+    @@result
+  end
+    
+end
+
+
+class User < ActiveRecord::Base
+  has_many :articles
+  attr_accessor :posted
+  include BufferedJob::Util
+
+  def notify(comment)
+    BufferedJob::Spec.result =  comment
+  end
+
+  def merge_notify(comments)
+    BufferedJob::Spec.result =  comments
+  end
+end
+
+class Article < ActiveRecord::Base
+  belongs_to :user
+  has_many :comments
+end
+
+class Comment < ActiveRecord::Base
+  belongs_to :user
+  belongs_to :article
+end
+
 
 

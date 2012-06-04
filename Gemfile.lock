@@ -89,6 +89,7 @@ PLATFORMS
 
 DEPENDENCIES
   actionmailer
+  activesupport
   bundler
   delayed_job_active_record
   jeweler (~> 1.8.3)
