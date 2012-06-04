@@ -9,11 +9,11 @@ a buffer.
 
 ## Scenario
 
-Supposing that you are running sort of social media that has user articles which have comments on each. 
+Supposing that you are running sort of social media that has user articles which accept comments on each. 
 You'll probably want to have email notification for incomming comments on a article. 
-If you implement straightforward, the auther of popular article would receive tons of email for a article.
+If you implement straightforward, the auther of popular article would receive tons of email for an article.
 That must be bothering. To avoid sending too many mails to a receipient, you can merge multiple 
-notificaiton messages into one another method (in this casse that would be sending method) .
+notificaiton messages into an array and process it with another specific method.
 
 That mean, if a user gets a comment notification for her blog article as follows:
 
