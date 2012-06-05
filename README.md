@@ -82,6 +82,8 @@ See more details about [delayed_job_active_record](https://github.com/collective
 
 ## Usage
 
+### With ActiveRecord Object
+
 Every active_record object has `buffer` method. You can put it  between receiver and method and bufferes method
 along with argument object.
 
@@ -96,10 +98,25 @@ invoke merge_{:original_method} method insted of original method on
 that User model,so in this case, you must define `merge_post_to_twitter` in User model.
 
 ```
-def merge_post_to_twitter(articles)
- ..
-end
+  def merge_post_to_twitter(articles)
+    ..
+  end
 ```
+
+### With ActionMailer Class
+
+Also, subclasses of ActionMailer::Base have buffer method. You can buffer sending method with
+buffering keyword. That keyword will be used to determine which methods should be merged.
+
+```
+ YourMailer.buffer("send_to/135").greeting(some_object)
+ YourMailer.buffer("send_to/135").greeting(other_object)
+ # these two will be merged 
+ #  and invoke merge_greeting([some_object,other_object])
+ YourMailer.buffer("send_to/222").greeting(yet_another_object)
+ # this won't be merge into preceding two.
+```
+
 
 ## Current Limitation
 
