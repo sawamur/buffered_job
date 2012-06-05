@@ -62,14 +62,14 @@ end
 
 
 class BufferedJob::Spec
-  @@result = []
+  @@results = []
 
-  def self.result=(args)
-    @@result = args
+  def self.results=(args)
+    @@results = args
   end
-
-  def self.result
-    @@result
+  
+  def self.results
+    @@results
   end
     
 end
@@ -81,11 +81,11 @@ class User < ActiveRecord::Base
 #  include BufferedJob::Ext
 
   def notify(comment)
-    BufferedJob::Spec.result =  comment
+    BufferedJob::Spec.results << comment
   end
 
   def merge_notify(comments)
-    BufferedJob::Spec.result =  comments
+    BufferedJob::Spec.results << comments
   end
 end
 
@@ -99,5 +99,21 @@ class Comment < ActiveRecord::Base
   belongs_to :article
 end
 
+
+class TestMailer < ActionMailer::Base
+
+  def notification(obj)
+    mail(:to => obj[:to],
+         :subject => "Welcome to My Awesome Site") do |fmt|
+      fmt.text {
+        render :text => "OK"
+      }
+    end
+  end
+
+  def merge_notification(objs)
+    
+  end
+end
 
 

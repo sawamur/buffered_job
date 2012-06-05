@@ -5,7 +5,6 @@ module BufferedJob
     self.table_name = 'buffered_jobs'
     before_create :yaml_dump
     after_create :set_delayed_job
-
     
     def self.cache
       @@cache ||= defined?(Rails) ? Rails.cache : ActiveSupport::Cache::MemoryStore.new
@@ -26,7 +25,7 @@ module BufferedJob
           j.destroy
           next 
         end
-        cojobs = jobs.select{ |o| o.user_id = j.user_id and o.category == j.category }
+        cojobs = jobs.select{ |o| o.user_id == j.user_id and o.category == j.category }
         receiver = YAML.load(j.receiver)
         if cojobs.size > 1
           begin

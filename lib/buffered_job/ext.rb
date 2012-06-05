@@ -1,15 +1,23 @@
 module BufferedJob
   module Ext
-    def buffer_for(user,opt={})
-      Proxy.new(self,user,opt)
+    def buffer_for(user,key=nil,opt={})
+      Proxy.new(self,user,key,opt)
     end
 
-    def buffer(opt={})
-      raise NoBufferTargetError unless self.respond_to?(:id)
-      buffer_for(self,opt)
+    def buffer(key=nil,opt={})
+      if !self.respond_to?(:id) and self.superclass != ActionMailer::Base
+        raise NoBufferTargetError 
+      end
+      if self.kind_of?(Class) and key.nil?
+        raise NoBufferKeywordError,"Specify buffer keyword like YourMailer.buffer('send_to_user/123').notification(msg)"
+      end
+      buffer_for(self,key,opt)
     end
   end
 
   class NoBufferTargetError < StandardError
+  end
+
+  class NoBufferKeywordError < StandardError
   end
 end
