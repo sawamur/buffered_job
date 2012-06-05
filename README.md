@@ -33,7 +33,7 @@ Then. With this module,you can buffer `notify` method
  @user.buffer.notify(c2)
  # these two methods would be translated to
  @user.merge_notify([c1,c2])
- # then you can build other notification email with arryed comment objects
+ # So, you can write other notification email template which handles array of comment objects
 ```
 
 
@@ -114,7 +114,7 @@ buffering keyword. That keyword will be used to determine which methods should b
  # these two will be merged 
  #  and invoke merge_greeting([some_object,other_object])
  YourMailer.buffer("send_to/222").greeting(yet_another_object)
- # this won't be merge into preceding two.
+ # this won't be merged into preceding two.
 ```
 
 
