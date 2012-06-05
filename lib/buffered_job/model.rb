@@ -6,17 +6,13 @@ module BufferedJob
     before_create :yaml_dump
     after_create :set_delayed_job
     
-    def self.cache
-      @@cache ||= defined?(Rails) ? Rails.cache : ActiveSupport::Cache::MemoryStore.new
-    end
-    
     def self.mailer?(obj)
       obj.respond_to?(:superclass) and obj.superclass == ActionMailer::Base
     end
     
     def self.flush!
-      return if locked?
-      lock!
+      return if Lock.locked?
+      Lock.lock!
       jobs = self.all
       skip = []
       @last_results = []
@@ -32,13 +28,16 @@ module BufferedJob
             targets = cojobs.map{|c|
               YAML.load(c.target)
             }
+            unless receiver.respond_to?(j.merge_method)
+              raise NoMergeMethodError,"define #{j.merge_method}"
+            end
             if mailer?(receiver)
-              r = receiver.send(j.merge_method,targets).deliver
+              @last_results << receiver.send(j.merge_method,targets).deliver
             else
-              r = receiver.send(j.merge_method,targets)
+              @last_results << receiver.send(j.merge_method,targets)
             end
           rescue => er
-            $stderr.puts er.to_s
+            @last_results << er
           end
           cojobs.each do |c|
             skip[c.id] = true
@@ -47,35 +46,23 @@ module BufferedJob
           begin
             target = YAML.load(j.target)
             if mailer?(receiver)
-              r = receiver.send(j.method,target).deliver
+              @last_results << receiver.send(j.method,target).deliver
             else
-              r = receiver.send(j.method,target)
+              @last_results << receiver.send(j.method,target)
             end
           rescue => er
-            $stderr.puts er.to_s
+            @last_results << er
           end
         end
         j.destroy
-        @last_results << r
       end
-      unlock!
+      Lock.unlock!
     end
     
     def self.last_results
       @last_results or []
     end
     
-    def self.lock!
-      cache.write("mail_buffer_lock",true,:expires_in => 10.minutes)
-    end
-    
-    def self.unlock!
-      cache.delete("mail_buffer_lock")
-    end
-    
-    def self.locked?
-      cache.exist?("mail_buffer_lock")
-    end
     
     private
     def yaml_dump

@@ -14,10 +14,4 @@ module BufferedJob
       buffer_for(self,key,opt)
     end
   end
-
-  class NoBufferTargetError < StandardError
-  end
-
-  class NoBufferKeywordError < StandardError
-  end
 end

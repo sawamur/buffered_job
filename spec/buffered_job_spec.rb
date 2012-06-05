@@ -40,6 +40,23 @@ describe "BufferedJob" do
     BufferedJob::Spec.results.should include(c3)
   end
 
+
+  context "returing results" do
+    it "should returns last results by BufferedJob.last_results" do
+      @john.buffer.notify({:foo => "bar"})
+      @paul.buffer.notify({:moo => "ooo"})
+      BufferedJob.flush!
+      BufferedJob.last_results.should == [1,1]
+    end
+
+    it "should contain NoMergeMethodError if the receiver doesn't have it" do
+      @john.buffer.say("Yay!")
+      @john.buffer.say("Hoo!")
+      BufferedJob.flush!
+      BufferedJob.last_results.last.should be_a_kind_of(BufferedJob::NoMergeMethodError)
+    end
+  end
+
   context "with delayed_job" do
     before do
       @original_delay_time = BufferedJob.delay_time

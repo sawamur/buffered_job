@@ -71,7 +71,6 @@ class BufferedJob::Spec
   def self.results
     @@results
   end
-    
 end
 
 
@@ -82,11 +81,18 @@ class User < ActiveRecord::Base
 
   def notify(comment)
     BufferedJob::Spec.results << comment
+    1
   end
 
   def merge_notify(comments)
     BufferedJob::Spec.results << comments
+    2
   end
+
+  def say(str)
+    3
+  end
+
 end
 
 class Article < ActiveRecord::Base
