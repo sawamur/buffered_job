@@ -77,7 +77,7 @@ flushing would be triggered by delayed_job. Start worker as follows after migrat
 $ (bundle exec) rake jobs:work
 ```
 
-See more details about [delayed_job_active_record](https://github.com/collectiveidea/delayed_job_active_record)
+See more details about [delayed_job](https://github.com/collectiveidea/delayed_job)
 
 
 ## Usage
